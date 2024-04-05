@@ -14,6 +14,11 @@ async function showRecipes() {
     const clone = el.cloneNode(true);
     clone.querySelector("[data-name]").textContent = rec.name;
     clone.querySelector("[data-origin]").textContent = rec.origin;
+    clone.querySelector("[data-diet]").textContent = rec.diet;
+    clone.querySelector("[data-ingredients]").textContent = rec.ingredients;
+    clone.querySelector("[data-allergens]").textContent = rec.allergens;
+    clone.querySelector("[data-description]").textContent = rec.description;
+    clone.querySelector("[data-serves]").textContent = rec.serves;
     if (rec.studentFriendly) {
       clone.querySelector(".status").hidden = false;
     } else {

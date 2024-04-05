@@ -86,7 +86,7 @@
                     Origin
                     <span class="hint">Where is the recipe from?</span>
                 </label>
-                <input type="text" id="origin" name="origin" list="countrylist" />
+                <input type="text" id="origin" name="origin" required list="countrylist" />
                 <datalist id="countrylist">
                     <option value="Denmark"></option>
                     <option value="Sweden"></option>
@@ -148,20 +148,20 @@
                 <div class="header-content">
                     <h2>
                         <span data-name>Brændende kærlighed</span>,
-                        <span data-origin>Denmark</span>
+                        <span data-origin></span>
                     </h2>
 
                     <div>
                         <dl>
                             <div>
-                                <dt class="visually-hidden">Species</dt>
-                                <dd data-origin>Denmark</dd>
+                                <dt class="visually-hidden">Description:</dt>
+                                <dd data-description></dd>
                             </div>
                         </dl>
                         <dl>
                             <div>
-                                <dt class="visually-hidden">Diet</dt>
-                                <dd data-diet>Vegetarian</dd>
+                                <dt class="visually-hidden">Diet:</dt>
+                                <dd data-diet></dd>
                             </div>
                         </dl>
                     </div>
@@ -169,17 +169,23 @@
                 <p class="status">
                     <span data-studentFriendly>Student Friendly!</span>
                 </p>
+                <p>Contains:</p>
+                <dl class="ingredient-list" data-ingredients>
+                    <dt class="visually-hidden"></dt>
+                </dl>
+                <p>Allergens:</p>
+                <dl class="allergen-list" data-allergens>
+                    <dt class="visually-hidden"></dt>
+                </dl>
             </header>
-            <dl class="ingredient-list" data-ingredients>
-                <dt class="visually-hidden">Ingredients</dt>
-            </dl>
+
             <section>
                 <h3>Serves</h3>
                 <meter data-serves min="0" max="5" low="0" high="5" value="3"></meter>
             </section>
             <div class="actions">
-                <button data-id="15" data-action="delete">Slet</button>
-                <button data-id="15" data-action="update">Opdater</button>
+                <button type="submit" data-id="15" data-action="delete">Slet</button>
+                <button type="submit" data-id="15" data-action="update">Opdater</button>
             </div>
         </article>
     </template>
@@ -196,16 +202,17 @@
 
     main {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
         background-color: #333;
         gap: 1rem;
         margin: 0 auto 0 auto;
+        padding: 0 3rem 0 3rem;
     }
 
     form {
         display: flex;
         flex-direction: column;
-        align-items: start;
+        align-items: center;
         justify-content: center;
         gap: 0.6rem;
         block-size: 100vh;
@@ -215,6 +222,18 @@
     form label {
         margin-bottom: 0.3rem;
         text-align: start;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hint {
+        color: #9d9d9d;
+        font-size: 10px;
+    }
+
+    .form-group {
+        display: flex;
+        gap: 1rem;
     }
 
     form input[type="text"],
@@ -255,17 +274,32 @@
         flex-direction: row;
     }
 
+    .recipes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+
     article {
         border: #e1e1e1 solid 4px;
+        border-radius: 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.6rem;
+        align-content: start;
+        gap: 1rem;
         block-size: 100vh;
         color: #fff;
+        padding: 1.5rem;
 
-        max-width: 400px;
-        max-height: 350px;
+        width: fit-content;
+        height: fit-content;
+
+        .status {
+            color: coral;
+        }
     }
 </style>
